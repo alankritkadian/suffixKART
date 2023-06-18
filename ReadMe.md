@@ -1,21 +1,46 @@
---- Welcome to Grocery Management System ---
+# Grocery Management System
 
-To Compile the code :-
-         
-         g++ Suffix_tree.c PatternSearch.c  main.cpp bloom.cpp BK_Tree.cpp
-       
-The Project has 2 Ends
+Welcome to the Grocery Management System! This system allows buyers and sellers to interact with each other. Instead of running the application through a terminal, you can now access it through a chat website and receive responses from the bot.
 
-          Buyer End                                             Seller End
-          This is where the buyer enter's his/her name          This is where the Seller adds the items and can search the order List
-          along with the items needed.                          along with Full Reciept
-          Features:                                             Features:
-          -Auto Correct (using BK-Tree)                         -Unique Item List (using Bloom Filter)
-                                                                -Fast Search (using Suffix Tree)
-Warning :-
+## Running Instructions
 
--After each Item name entered by buyer press Enter.
+1. Run `app.py` to start the application.
+2. Run `listen.py` to enable the chat functionality.
+3. Start the localhost to access the chat website.
 
--Dont Use Items which are subset of one another.
+**Note:** Make sure not to enter wrong inputs as it may cause unexpected behavior.
 
--Don't use names longer than 99 characters or less than 1.
+## Compilation Instructions
+
+To compile the code, follow these steps:
+
+```bash
+g++ Suffix_tree.c PatternSearch.c main.cpp bloom.cpp BK_Tree.cpp
+```
+
+## Buyer End
+
+At the buyer end, you can enter your name and the items you need. The system provides the following features:
+
+- Auto Correct (using BK-Tree): Helps with suggesting corrections for inputted item names.
+
+## Seller End
+
+At the seller end, you can add items and search the order list, as well as generate a full receipt. The system offers the following features:
+
+- Unique Item List (using Bloom Filter): Ensures that the item list contains only unique items.
+- Fast Search (using Suffix Tree): Enables quick searching within the order list.
+
+## DEMO
+
+![Chat App](images/screen.png)
+
+## Warnings
+
+Please take note of the following warnings while using the system:
+
+- After entering each item name as a buyer, press Enter.
+- Avoid using items that are subsets of one another.
+- Do not use names longer than 99 characters or less than 1.
+
+Enjoy using the Grocery Management System!
