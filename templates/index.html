@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SuffixKART</title>
+    <style>
+        /* CSS for chat container */
+        .chat-container {
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #0366d6;
+            border-radius: 10px;
+            height: 400px;
+            overflow-y: scroll;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f1f1f1;
+        }
+
+        /* CSS for bot messages */
+        .bot-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: x-large;
+        }
+
+        .bot-message span {
+            background-color: #f1f1f1;
+            color: #555;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* CSS for user messages */
+        .user-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: right;
+            font-size: x-large;
+        }
+
+        .user-message span {
+            background-color: #0366d6;
+            color: #fff;
+            border-radius: 10px;
+            padding: 5px 10px;
+            display: inline-block;
+        }
+
+        /* CSS for form */
+        .input-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .input-container input[type="text"] {
+            flex-grow: 1;
+            padding: 5px;
+            margin-right: 10px;
+            border-radius: 10px;
+            border: 1px solid #0366d6;
+            font-size: large;
+        }
+
+        .input-container input[type="submit"] {
+            padding: 5px 15px;
+            border-radius: 10px;
+            background-color: #0366d6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: large;
+        }
+
+        /* CSS for message content */
+        .message p {
+            margin: 0;
+        }
+
+        /* CSS for scrollbar */
+        .chat-container::-webkit-scrollbar {
+            width: 15px;
+            border-radius: 10px;
+        }
+
+        .chat-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background: #c0bfbf;
+            border-radius: 10px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb:hover {
+            background: #0366d6;
+        }
+
+        /* CSS for chat bot heading */
+        h1 {
+            text-align: center;
+            color: #0366d6;
+        }
+
+    </style>
+    <script>
+        // JavaScript code for auto-scrolling to the bottom of the chat container
+        function scrollToBottom() {
+            var chatContainer = document.getElementsByClassName("chat-container")[0];
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        window.onload = scrollToBottom;
+    </script>
+</head>
+<body>
+    <h1>SuffixKART</h1>
+    <div class="chat-container">
+        {% set max_length = bot_messages|length if bot_messages|length > user_inputs|length else user_inputs|length %}
+        {% for i in range(max_length) %}
+            {% if i < bot_messages|length %}
+                <div class="message bot-message">
+                    <span>{{ bot_messages[i] }}</span>
+                </div>
+            {% endif %}
+            
+            {% if i < user_inputs|length %}
+                <div class="message user-message">
+                    <span>{{ user_inputs[i] }}</span>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    
+    <form action="/send" method="post">
+        <div class="input-container">
+            <input type="text" name="user_input" placeholder="Type your message">
+            <input type="submit" value="Send">
+        </div>
+    </form>
+</body>
+</html>
