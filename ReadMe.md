@@ -33,7 +33,7 @@ At the seller end, you can add items and search the order list, as well as gener
 
 ## DEMO
 
-![Chat App](images/screen.jpg)
+![Chat App](images/home_screen.jpg)
 
 ## Warnings
 
